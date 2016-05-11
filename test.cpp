@@ -16,22 +16,6 @@ struct used_time
 	clock_t m_time;
 };
 
-struct JustBefore
-{
-	void Before(int, int, int)
-	{
-		std::cout << 11;
-	}
-};
-
-struct JustAfter
-{
-	void After(int, int, int)
-	{
-		std::cout << 22;
-	}
-};
-
 int main()
 {
 
@@ -41,8 +25,6 @@ int main()
 	};
 
 	Invoke<used_time<int>,used_time<float> >(f, 1);
-// 	Invoke<JustBefore>(f, 1, 1, 1);
-// 	Invoke<JustAfter>(f, 1, 1, 1);
 	system("pause");
 	return 0;
 }

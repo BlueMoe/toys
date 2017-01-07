@@ -1,8 +1,8 @@
 #pragma once
 /*
-dimA=L¦ÁM¦ÂT¦ÃI¦Ä¦¨¦ÅN¦ÆJ¦Ç,ÕâÊÇÁ¿¸ÙµÄÍ¨Ê½¡£Ê½ÖĞµÄÖ¸Êı¦Á,¦Â,¦Ã¡­³ÆÎªÁ¿¸ÙÖ¸Êı£¬È«²¿Ö¸Êı¾ùÎªÁãµÄÎïÀíÁ¿£¬³ÆÎªÎŞÁ¿¸ÙÁ¿£¬Èç¾«Ï¸½á¹¹³£Êı¼´ÎªÒ»ÎŞÁ¿¸ÙÁ¿¡£
-´ËÍâ£¬ÈçËÙ¶ÈµÄÁ¿¸ÙdimV=LT£­1£¬¼ÓËÙ¶ÈaµÄÁ¿¸Ùdima=LT£­2µÈ[1]
-ÓÃ_Vector±íÊ¾Á¿¸ÙÖ¸Êı
+dimA=LÎ±MÎ²TÎ³IÎ´Î˜ÎµNÎ¶JÎ·,è¿™æ˜¯é‡çº²çš„é€šå¼ã€‚å¼ä¸­çš„æŒ‡æ•°Î±,Î²,Î³â€¦ç§°ä¸ºé‡çº²æŒ‡æ•°ï¼Œå…¨éƒ¨æŒ‡æ•°å‡ä¸ºé›¶çš„ç‰©ç†é‡ï¼Œç§°ä¸ºæ— é‡çº²é‡ï¼Œå¦‚ç²¾ç»†ç»“æ„å¸¸æ•°å³ä¸ºä¸€æ— é‡çº²é‡ã€‚
+æ­¤å¤–ï¼Œå¦‚é€Ÿåº¦çš„é‡çº²dimV=LTï¼1ï¼ŒåŠ é€Ÿåº¦açš„é‡çº²dima=LTï¼2ç­‰[1]
+ç”¨_Vectorè¡¨ç¤ºé‡çº²æŒ‡æ•°
 */
 template<class T, T ...Args>
 struct _Vector
@@ -62,26 +62,26 @@ private:
 };
 
 /*
-»ù±¾Á¿¸Ù±ê×¼µ¥Î»¶¨Òå
-ConstVar±íÊ¾ÎŞÁ¿Á¿¸Ù
+åŸºæœ¬é‡çº²æ ‡å‡†å•ä½å®šä¹‰
+ConstVarè¡¨ç¤ºæ— é‡é‡çº²
 */
-typedef _Physical_Quantity < double, _Const_Var >					ConstVar;
-typedef _Physical_Quantity < double, _Length >						Meter;
-typedef _Physical_Quantity < double, _Mass>							Kilogram;
-typedef _Physical_Quantity < double, _Time>							Second;
-typedef _Physical_Quantity < double, _Electric_Current>				Ampere;
+typedef _Physical_Quantity < double, _Const_Var >			ConstVar;
+typedef _Physical_Quantity < double, _Length >				Meter;
+typedef _Physical_Quantity < double, _Mass>				Kilogram;
+typedef _Physical_Quantity < double, _Time>				Second;
+typedef _Physical_Quantity < double, _Electric_Current>			Ampere;
 typedef _Physical_Quantity < double, _Thermodynamic_Temperature>	Kelvin;
-typedef _Physical_Quantity < double, _Amount_of_Substance>			Mole;
-typedef _Physical_Quantity < double, _Luminous_Intensity>			Candela;
+typedef _Physical_Quantity < double, _Amount_of_Substance>		Mole;
+typedef _Physical_Quantity < double, _Luminous_Intensity>		Candela;
 
 /*
-ÎŞÁ¿Á¿¸Ù¶¨Òå
+æ— é‡é‡çº²å®šä¹‰
 */
 const ConstVar PI(3.141592653);
 
 
 /*
-Á¿¸ÙÖ¸Êı¼Ó¼õ¶¨Òå
+é‡çº²æŒ‡æ•°åŠ å‡å®šä¹‰
 */
 template<class T,T Vector1, T Vector2>
 struct _Vector_Plus_Impl
@@ -120,9 +120,9 @@ struct _Vector_Transform
 };
 
 /*
-_Vector_TransformµÄÆ«ÌØ»¯
-Ê¹µÃVector1ºÍVector2 ÒÔTransFuc::template _impl<T,Vector1,Vector2>::value...½øĞĞÖğÏîÏà¼Ó»òÏà¼õ
-ÓÃÒÔ¶¨Òå»ù±¾Á¿¸Ù½øĞĞ³Ë³ı·¨ºó,ĞÂµÄÁ¿¸ÙÖ¸ÊıÏòÁ¿type
+_Vector_Transformçš„åç‰¹åŒ–
+ä½¿å¾—Vector1å’ŒVector2 ä»¥TransFuc::template _impl<T,Vector1,Vector2>::value...è¿›è¡Œé€é¡¹ç›¸åŠ æˆ–ç›¸å‡
+ç”¨ä»¥å®šä¹‰åŸºæœ¬é‡çº²è¿›è¡Œä¹˜é™¤æ³•å,æ–°çš„é‡çº²æŒ‡æ•°å‘é‡type
 */
 template<
 	template<class T,T...Args1> class Vector1,
@@ -135,7 +135,7 @@ struct _Vector_Transform<Vector1<T, Args1...>, Vector2<T, Args2...>, TransFunc>
 };
 
 /*
-¼Ó·¨
+åŠ æ³•
 */
 template<class T, class Vector>
 inline _Physical_Quantity<T, Vector> operator+(const _Physical_Quantity<T, Vector>& leftelem, const _Physical_Quantity<T, Vector>& rightelem)
@@ -145,7 +145,7 @@ inline _Physical_Quantity<T, Vector> operator+(const _Physical_Quantity<T, Vecto
 }
 
 /*
-¼õ·¨
+å‡æ³•
 */
 template<class T, class Vector>
 inline _Physical_Quantity<T, Vector> operator-(const _Physical_Quantity<T, Vector>& leftelem, const _Physical_Quantity<T, Vector>& rightelem)
@@ -155,8 +155,8 @@ inline _Physical_Quantity<T, Vector> operator-(const _Physical_Quantity<T, Vecto
 }
 
 /*
-³Ë·¨
-»á²úÉúĞÂµÄÁ¿¸ÙÖ¸ÊıÏòÁ¿,ÊÇÔ­Á¿¸ÙÖ¸Êı¸÷Ïî·Ö±ğÏà¼Ó
+ä¹˜æ³•
+ä¼šäº§ç”Ÿæ–°çš„é‡çº²æŒ‡æ•°å‘é‡,æ˜¯åŸé‡çº²æŒ‡æ•°å„é¡¹åˆ†åˆ«ç›¸åŠ 
 */
 template<class T,class Vector1, class Vector2>
 inline _Physical_Quantity<T, typename _Vector_Transform<Vector1, Vector2, _Vector_Plus>::type>
@@ -167,7 +167,7 @@ operator*(const _Physical_Quantity<T, Vector1>& leftelem, const _Physical_Quanti
 }
 
 /*
-Ö§³ÖÎïÀíÁ¿´øÏµÊı
+æ”¯æŒç‰©ç†é‡å¸¦ç³»æ•°
 */
 template<class T, class Vector,class T2>
 inline _Physical_Quantity<T, Vector>
@@ -187,8 +187,8 @@ operator*(const T2& leftval, const _Physical_Quantity<T, Vector>& rightelem)
 
 
 /*
-³ı·¨
-»á²úÉúĞÂµÄÁ¿¸ÙÖ¸ÊıÏòÁ¿,ÊÇÔ­Á¿¸ÙÖ¸Êı¸÷Ïî·Ö±ğÏà¼õ
+é™¤æ³•
+ä¼šäº§ç”Ÿæ–°çš„é‡çº²æŒ‡æ•°å‘é‡,æ˜¯åŸé‡çº²æŒ‡æ•°å„é¡¹åˆ†åˆ«ç›¸å‡
 */
 template<class T, class Vector1, class Vector2>
 inline _Physical_Quantity<T, typename _Vector_Transform<Vector1, Vector2, _Vector_Minus>::type>
@@ -199,7 +199,7 @@ operator/(const _Physical_Quantity<T, Vector1>& leftelem, const _Physical_Quanti
 }
 
 /*
-Ö§³ÖÎïÀíÁ¿´øÏµÊı
+æ”¯æŒç‰©ç†é‡å¸¦ç³»æ•°
 */
 template<class T, class Vector ,class T2>
 inline _Physical_Quantity<T, Vector>

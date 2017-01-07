@@ -70,7 +70,7 @@ typedef _Physical_Quantity < double, _Length >				Meter;
 typedef _Physical_Quantity < double, _Mass>				Kilogram;
 typedef _Physical_Quantity < double, _Time>				Second;
 typedef _Physical_Quantity < double, _Electric_Current>			Ampere;
-typedef _Physical_Quantity < double, _Thermodynamic_Temperature>	Kelvin;
+typedef _Physical_Quantity < double, _Thermodynamic_Temperature>		Kelvin;
 typedef _Physical_Quantity < double, _Amount_of_Substance>		Mole;
 typedef _Physical_Quantity < double, _Luminous_Intensity>		Candela;
 

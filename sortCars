@@ -3,7 +3,7 @@
 //B. 8
 //C. 9
 //D. 10   
-//答案B,思路及代码:
+//答案B,思路及代码: 
 #include <iostream>
 #include <vector>
 #include <algorithm>

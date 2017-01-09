@@ -1,0 +1,74 @@
+//有36辆自动赛车和6条跑道，没有计时器的前提下，最少用几次比赛可以筛选出最快的三辆赛车？
+//A. 7
+//B. 8
+//C. 9
+//D. 10   
+//答案B,思路及代码:
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <functional>
+#include <assert.h>
+using std::cout;
+using std::endl;
+using std::vector;
+
+void sortCars()
+{
+		vector<int> allCar;
+		for (int i = 1; i <= 36; i++)
+		{
+			allCar.push_back(i);
+		}
+		std::random_shuffle(allCar.begin(), allCar.end());
+
+		vector<vector<int>> team;
+
+		for (int i = 0; i < 6; i++)
+		{
+			team.push_back(vector<int>(allCar.begin() + i * 6 , allCar.begin() + i * 6 + 6));
+		}
+
+		for (int i = 0; i < 6; i++)
+		{
+			//6次sort
+			std::sort(team[i].begin(), team[i].end(), std::greater<int>()); //6次
+		}
+
+		auto compTeamBy1st = [](const vector<int>& leftv, const vector<int>& rightv) -> bool
+		{
+			if (leftv.empty()) return false;
+			if (rightv.empty()) return false;
+
+			if (leftv[0] > rightv[0])
+			{
+				return true;
+			}
+			return false;
+		};
+
+		//第7次，按第一名排序6个team
+		std::sort(team.begin(), team.end(), compTeamBy1st);
+
+		vector<int> res;
+		res.push_back(team[0][0]);
+
+		vector<int> lastMatchMember;
+		lastMatchMember.push_back(team[0][1]);
+		lastMatchMember.push_back(team[0][2]);
+		lastMatchMember.push_back(team[1][0]);
+		lastMatchMember.push_back(team[1][1]);
+		lastMatchMember.push_back(team[1][2]);
+		lastMatchMember.push_back(team[2][0]);
+
+		//第八次
+		sort(lastMatchMember.begin(), lastMatchMember.end(), std::greater<int>());
+
+		res.push_back(lastMatchMember[0]);
+		res.push_back(lastMatchMember[1]);
+
+		assert(res[0] == 36);
+		assert(res[1] == 35);
+		assert(res[2] == 34);
+
+}

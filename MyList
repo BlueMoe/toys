@@ -1,0 +1,32 @@
+struct ListNode
+{
+	ListNode(int x) :_value(x) {}
+	ListNode* _nextPtr = nullptr;
+	int _value;
+};
+
+ListNode* my_reverseList(ListNode* headPtr)
+{
+	if (headPtr == nullptr) return nullptr;
+
+	if (headPtr->_nextPtr == nullptr) return headPtr;
+
+	ListNode* ret = nullptr;
+	ListNode* prevPtr = nullptr;
+	ListNode* curPtr = headPtr;
+	ListNode* nextPtr;
+	while (curPtr != nullptr)
+	{
+		nextPtr = curPtr->_nextPtr;
+
+		if (nextPtr == nullptr)
+		{
+			ret = curPtr;
+		}
+
+		curPtr->_nextPtr = prevPtr;
+		prevPtr = curPtr;
+		curPtr = nextPtr;
+	}
+	return ret;
+}

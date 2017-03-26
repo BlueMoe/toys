@@ -27,6 +27,6 @@ ListNode* my_reverseList(ListNode* headPtr)
 		curPtr->_nextPtr = prevPtr;
 		prevPtr = curPtr;
 		curPtr = nextPtr;
-	}
+	}  
 	return ret;
 }

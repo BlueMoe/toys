@@ -2,7 +2,7 @@
 
 class My__NonCopyable__Define
 {
-public:
+public:     
 	My__NonCopyable__Define() = default;
 	~My__NonCopyable__Define() = default;
 	My__NonCopyable__Define(const My__NonCopyable__Define&) = delete;

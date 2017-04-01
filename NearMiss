@@ -1,0 +1,15 @@
+bool isBulletNearMiss(const Vec& ai_position,const Vec& ai_direction,const Vec& bullet_origin,const Vec& bullet_direction)
+{
+Vec BulletToAI = Vec_Sub(ai_position,bullet_origin);
+float cosTheta = Vec_Dot(bullet_direction,BulletToAI) /( Vec_Magnitude(bullet_direction) * Vec_Magnitude(BulletToAI));
+float sinTheta = sqrt(1 - cosTheta * cosTheta);
+if(sinTheta * Vec_Magnitude(BulletToAI) < MAX_NEAR_MISS_DISTANCE)
+{
+ return true;
+}
+return false;
+}
+
+//not sure about this question.
+//meet in test of ubisoft.
+//take notes at here.
